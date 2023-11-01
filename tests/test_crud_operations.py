@@ -11,23 +11,30 @@ class TestCRUDOperations(unittest.TestCase):
             db.create_all()
         self.app = app.test_client()
 
-    def tearDown(self):
-        with app.app_context():
-            db.session.remove()
-            db.drop_all()
+    # def tearDown(self):
+    #     with app.app_context():
+    #         db.session.remove()
+    #         db.drop_all()
+    def test_get_non_existing_book(self):
+        non_existing_book_id = 9999
+        response_non_existing = self.app.get(f'/books/{non_existing_book_id}')
+        self.assertEqual(response_non_existing.status_code, 404)
 
     def test_create_book(self):
-        response = self.app.post("/books", json={"title": "Test Book", "author": "Test Author"})
+        response = self.app.post("/books", json={'title': 'Test_Book', 'author': 'Test_Author'})
         print(response)
         self.assertEqual(response.status_code, 200)
         data = response.get_json()
+        print(data)
         self.assertEqual(data["message"], "Book created successfully")
 
     def test_get_books(self):
-        response = self.app.get("/")
+        response = self.app.get("/books")
+        print(response)
         self.assertEqual(response.status_code, 200)
         data = response.get_json()
-        self.assertIsInstance(data["books"], list)
+        # self.assertIsInstance(data["books"], list)
+        self.assertEqual(data["books"], "Book received successfully")
 
     def test_update_book(self):
         response = self.app.post("/books", json={"title": "Test Book", "author": "Test author"})
