@@ -1,0 +1,61 @@
+$lightGray: lightgray;
+$skyBlue: skyblue;
+$gold: gold;
+$crimson: crimson;
+  
+  
+.App {
+  .container {
+    border: 1px solid black;
+    width: 1225px;
+    padding-left: 30px;
+    margin-top: 40px;
+    margin-left: 40px;
+  
+    h1 {
+      text-align: center;
+    }
+  
+    .createBookButton {
+      margin-left: 10px;
+      width: 150px;
+      font-weight: bold;
+      background-color: $skyBlue;
+    }
+  
+    table {
+      border-collapse: collapse;
+      width: 95%;
+      margin: 30px 0;
+      margin-left: 10px;
+  
+      th {
+        border: 1px solid black;
+        text-align: center;
+        height: 30px;
+        font-size: 20px;
+        background-color: $lightGray;
+      }
+  
+      td {
+        border: 1px solid black;
+        padding-left: 30px;
+        height: 25px;
+      }
+  
+      .updateButton {
+        margin-left: 60px;
+        width: 60px;
+        font-weight: bold;
+        background-color: $gold;
+      }
+  
+      .deleteButton {
+        margin-left: 50px;
+        width: 60px;
+        font-weight: bold;
+        background-color: $crimson;
+      }
+    }
+  }
+}
